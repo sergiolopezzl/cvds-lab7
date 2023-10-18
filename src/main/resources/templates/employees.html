@@ -56,7 +56,7 @@
         .tabs {
             display: flex;
             justify-content: space-between;
-            margin: 30px;
+            margin: 50px;
         }
         .tab-button {
             background-color: #DA2DE8;
@@ -78,6 +78,7 @@
     <button class="tab-button" onclick="openTab('lista')">Lista de Empleados</button>
     <button class="tab-button" onclick="openTab('crear')">Crear Empleado</button>
     <button class="tab-button" onclick="openTab('actualizar')">Actualizar Empleado</button>
+    <button class="tab-button" onclick="openTab('eliminar')">Eliminar Empleado</button>
 </div>
 <div id="lista" class="tab">
     <table>
@@ -143,6 +144,17 @@
         <button type="submit">Actualizar Empleado</button>
     </form>
 </div>
+
+<div id="eliminar" class="tab">
+    <h1>Actualizar Empleado</h1>
+    <form th:action="@{/employees/delete}" method="post" onsubmit="return confirm('¿Está seguro de que desea eliminar el empleado?')">
+        <label for="employeeIdel">ID del Empleado YA EXISTENTE para eliminar:</label>
+        <input type="text" id="employeeIdel" name="employeeId" required><br>
+
+        <button type="submit">Eliminar Empleado</button>
+    </form>
+</div>
+
 <script>
     function openTab(tabName) {
         var tabs = document.getElementsByClassName('tab');

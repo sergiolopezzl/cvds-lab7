@@ -16,7 +16,7 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public void createEmployee(String id, String name,String lastname,String role,Double salary){
+    public void createEmployee(Long id, String name,String lastname,String role,Double salary){
         Employee employee = new Employee(id, name, lastname, role, salary);
         employeeRepository.save(employee);
     }
@@ -26,12 +26,13 @@ public class EmployeeService {
     }
 
 
-    public void updateEmployee(String id, String name,String lastname) {
+    public void updateEmployee(Long id, String name,String lastname) {
         Employee employee = new Employee(id, name, lastname);
         employeeRepository.save(employee);
     }
     public void deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
+
     }
 
 

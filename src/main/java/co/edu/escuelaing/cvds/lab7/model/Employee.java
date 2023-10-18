@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Employee {
     @Id
     @Column(name = "employeeId")
-    private String employeeId;
+    private Long employeeId;
 
     @Column(name = "firstName")
     private String firstName;
@@ -28,7 +28,7 @@ public class Employee {
 
     }
 
-    public Employee(String employeeId, String firstName, String lastName, String role, double salary) {
+    public Employee(Long employeeId, String firstName, String lastName, String role, double salary) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -36,17 +36,17 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Employee(String id, String name, String lastname) {
+    public Employee(Long id, String name, String lastname) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public String getEmployeeId() {
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 
