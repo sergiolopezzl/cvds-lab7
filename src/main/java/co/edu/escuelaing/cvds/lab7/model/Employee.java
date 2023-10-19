@@ -20,7 +20,7 @@ public class Employee {
     @Column(name = "role")
     private String role;
     @Column(name = "salary")
-    private double salary;
+    private String salary;
 
 
 
@@ -28,18 +28,12 @@ public class Employee {
 
     }
 
-    public Employee(Long employeeId, String firstName, String lastName, String role, double salary) {
+    public Employee(Long employeeId, String firstName, String lastName, String role, String salary) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
         this.salary = salary;
-    }
-
-    public Employee(Long id, String name, String lastname) {
-        this.employeeId = employeeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
 
     public Long getEmployeeId() {
@@ -74,11 +68,11 @@ public class Employee {
         this.role = role;
     }
 
-    public double getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
     // Getters and setters
@@ -88,7 +82,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Double.compare(salary, employee.salary) == 0 && Objects.equals(employeeId, employee.employeeId) && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(role, employee.role);
+        return Objects.equals(employeeId, employee.employeeId) && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(role, employee.role) && Objects.equals(salary, employee.salary);
     }
 
     @Override

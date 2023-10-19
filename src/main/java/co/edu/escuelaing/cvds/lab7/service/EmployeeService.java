@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class EmployeeService {
@@ -16,7 +17,7 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public void createEmployee(Long id, String name,String lastname,String role,Double salary){
+    public void createEmployee(Long id, String name,String lastname,String role,String salary){
         Employee employee = new Employee(id, name, lastname, role, salary);
         employeeRepository.save(employee);
     }
@@ -25,14 +26,19 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
+    public void updateEmployee(Long id, String name,String lastname,String role,String salary){
+        Employee employee = employeeRepository.getReferenceById(id);
 
-    public void updateEmployee(Long id, String name,String lastname) {
-        Employee employee = new Employee(id, name, lastname);
-        employeeRepository.save(employee);
+        employee.setFirstName(!name.isEmpty() ? name : employee.getFirstName());
+        employee.setLastName(!lastname.isEmpty() ? lastname : employee.getLastName());
+        employee.setRole(!role.isEmpty() ? role : employee.getRole());
+        employee.setSalary(!salary.isEmpty() ? salary : employee.getSalary());
+
+        employeeRepository.save(employeeRepository.getReferenceById(id));
     }
+
     public void deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
-
     }
 
 

@@ -25,14 +25,14 @@ public class EmployeeController {
         return "employees";
     }
     @PostMapping("/employees/create")
-    public String createEmployee(@RequestParam Long employeeId, String firstName,String lastName,String role ,Double salary) {
+    public String createEmployee(@RequestParam Long employeeId, String firstName,String lastName,String role ,String salary){
         employeeService.createEmployee(employeeId, firstName, lastName, role, salary);
         return "redirect:/employees"; // Redirige a la página de lista de empleados después de la creación.
     }
 
     @PostMapping("/employees/update")
-    public String updateEmployee(@RequestParam Long employeeId, @RequestParam String firstName, @RequestParam String lastName) {
-        employeeService.updateEmployee(employeeId, firstName, lastName);
+    public String updateEmployee(@RequestParam Long employeeId, String firstName,String lastName,String role ,String salary){
+        employeeService.updateEmployee(employeeId, firstName, lastName, role, salary);
         return "redirect:/employees"; // Redirige a la página de lista de empleados después de la actualización.
     }
 
